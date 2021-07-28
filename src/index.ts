@@ -1,4 +1,4 @@
-import { SwapState, SwapStateV1 } from './state'
+import { SwapState } from './state'
 import { SwapInstruction, STABLE_SWAP_N_POOL_PROGRAM_ID } from './instructions'
 import { loadAccount } from './helpers/loadAccount'
 import { Connection, TransactionSignature, TransactionInstruction, Transaction, Signer } from '@solana/web3.js'

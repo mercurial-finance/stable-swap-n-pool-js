@@ -9,20 +9,6 @@ export interface AdminSettings {
   addLiquidityEnabled: boolean
 }
 
-export interface SwapStateV1 {
-  version: number
-  isInitialized: boolean
-  nonce: number
-  amplificationCoefficient: number
-  feeNumerator: number
-  adminFeeNumerator: number
-  tokenAccountsLength: number
-  tokenAccounts: PublicKey[]
-  poolMint: PublicKey
-  adminTokenMint: PublicKey
-  adminSettings: AdminSettings
-}
-
 export interface SwapState {
   version: number
   isInitialized: boolean
@@ -40,20 +26,6 @@ export interface SwapState {
 }
 
 export const AdminSettings: Layout<AdminSettings> = struct([bool('swapEnabled'), bool('addLiquidityEnabled')])
-
-export const SwapStateV1: Layout<SwapStateV1> = struct([
-  u8('version'),
-  bool('isInitialized'),
-  u8('nonce'),
-  u64('amplificationCoefficient'),
-  u64('feeNumerator'),
-  u64('adminFeeNumerator'),
-  u32('tokenAccountsLength'),
-  array(publicKey(), MAX_N_COINS, 'tokenAccounts'),
-  publicKey('poolMint'),
-  publicKey('adminTokenMint'),
-  AdminSettings.replicate('adminSettings')
-])
 
 // SwapState is always the latest
 export const SwapState: Layout<SwapState> = struct([
