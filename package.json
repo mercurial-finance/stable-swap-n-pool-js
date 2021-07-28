@@ -1,0 +1,36 @@
+{
+  "name": "@mercurial-finance/stable-swap-n-pool",
+  "version": "0.1.0",
+  "license": "UNLICENSED",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "scripts": {
+    "build": "rm -rf dist && tsc -p tsconfig.build.json && tsc -p tsconfig.esm.json",
+    "start": "tsc -w",
+    "test-pool": "ts-mocha -p tsconfig.json tests/**/*.spec.ts",
+    "start-with-test-validator": "start-server-and-test 'solana-test-validator --bpf-program MERLuDFBMmsHnsBPZw2sDQZHvXFMwp8EdjudcU2HKky ../../program/target/deploy/mercurial_stable_swap_n_pool.so --reset --quiet' http://localhost:8899/health 'rushx test-pool'",
+    "load-pool": "ts-node --files --project tsconfig.json cli/loadPool.ts"
+  },
+  "files": [
+    "dist",
+    "src"
+  ],
+  "dependencies": {
+    "@solana/web3.js": "^1.15.0",
+    "buffer-layout": "^1.2.0",
+    "@solana/spl-token": "^0.1.5",
+    "bn.js": "^5.2.0",
+    "@project-serum/borsh": "^0.2.2",
+    "ts-node": "^10.0.0",
+    "dotenv": "~10.0.0"
+  },
+  "devDependencies": {
+    "ts-mocha": "^8.0.0",
+    "@types/bn.js": "^5.1.0",
+    "start-server-and-test": "^1.12.3",
+    "@types/mocha": "^8.2.2",
+    "typescript": "^4.3.4",
+    "bs58": "^4.0.1",
+    "@types/bs58": "^4.0.1"
+  }
+}
