@@ -1,7 +1,7 @@
 {
   "name": "@mercurial-finance/stable-swap-n-pool",
   "version": "0.1.0",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "scripts": {
