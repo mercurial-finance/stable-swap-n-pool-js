@@ -29,3 +29,5 @@ These are the list of addresses for our pools:
 ## Example
 
 To load the pool information with the pool address, you can simply run: `npm run load-pool SWABtvDnJwWwAb9CbSA3nv7nTnrtYjrACAVtuP3gyBB`
+
+You can also look into `./cli/loadPool.ts` to see what other details you want to load from the pool.
