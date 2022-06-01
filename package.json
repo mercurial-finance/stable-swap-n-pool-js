@@ -9,7 +9,8 @@
     "start": "tsc -w",
     "test-pool": "ts-mocha -p tsconfig.json tests/**/*.spec.ts",
     "start-with-test-validator": "start-server-and-test 'solana-test-validator --bpf-program MERLuDFBMmsHnsBPZw2sDQZHvXFMwp8EdjudcU2HKky ../../program/target/deploy/mercurial_stable_swap_n_pool.so --reset --quiet' http://localhost:8899/health 'rushx test-pool'",
-    "load-pool": "ts-node --files --project tsconfig.json cli/loadPool.ts"
+    "load-pool": "ts-node --files --project tsconfig.json cli/loadPool.ts",
+    "initialize-pool": "ts-node --files --project tsconfig.json cli/initializePool.ts"
   },
   "files": [
     "dist",
