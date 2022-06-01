@@ -2,22 +2,24 @@ import { PublicKey, Connection } from "@solana/web3.js";
 import { url } from "../url";
 import { SIMULATION_USER, StableSwapNPool } from "../src/";
 
-const POOL_ACCOUNT = new PublicKey(
-  "2msq2uyvceBzoQXkJnjVqWAvjdPpXBGT4NzaZMJE6bqW"
-);
+const poolAddress = process.argv.slice(2)[0];
+if (!poolAddress) {
+  throw Error("Please provide a pool address");
+}
+
+const poolAccount = new PublicKey(poolAddress);
 
 async function initializePool() {
   const connection = new Connection(url, "confirmed");
 
-  console.log(`poolAccount: ${POOL_ACCOUNT.toBase58()}`);
+  console.log(`poolAccount: ${poolAccount.toBase58()}`);
 
   const stableSwapNPool = await StableSwapNPool.load(
     connection,
-    POOL_ACCOUNT,
+    poolAccount,
     SIMULATION_USER
   );
-  console.log(`precisionFactor: ${stableSwapNPool.precisionFactor}`);
-  console.log(`precisionMultiplier: ${stableSwapNPool.precisionMultiplier}`);
+  console.log(`LP Token Mint: ${stableSwapNPool.poolTokenMint.toBase58()}`);
 }
 
 console.log(`Running ${initializePool.name}`);
